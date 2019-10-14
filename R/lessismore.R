@@ -1,7 +1,6 @@
 # Function to evaluate if some packages could be unloaded
 # The function can take some time to run if the script is long!
 
-# Require the package "NCmisc"
 # Require the package "sos" for some functions that were not identified by NCmisc
 # Require "knitr" if input file is .Rmd
 # Require ggplot2 and plotly if argument plot_output == TRUE
@@ -21,7 +20,6 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
 
   packages <- sort(packages)
 
-  require("NCmisc")
   require("sos")
   list_out <- list()
 
