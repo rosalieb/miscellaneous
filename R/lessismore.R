@@ -12,6 +12,8 @@
 
 # Works for .R and .Rmd. If input is .Rmd, the function will first extract the code from chunk (creating a copy of the code in the working directory)
 
+if(!"sos" %in% rownames(installed.packages())) install.packages("sos")
+if(!"tools" %in% rownames(installed.packages())) install.packages("tools")
 
 lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, thresh = 2) {
   if (!file.exists(path2file)) {
@@ -20,13 +22,14 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
 
   packages <- sort(packages)
 
-  require("sos")
+  library("tools")
+  library("sos")
   list_out <- list()
 
 
   # Step 0: If .Rmd file, need to extract the code in R chunks first
   # Use code in https://felixfan.github.io/extract-r-code/
-  if(get.ext(path2file)=="Rmd") {
+  if(file_ext(path2file)=="Rmd") {
     require("knitr")
     tmp <- purl(path2file)
     path2file <- paste(getwd(),tmp,sep="/")
