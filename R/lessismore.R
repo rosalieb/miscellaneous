@@ -14,6 +14,7 @@
 
 if(!"sos" %in% rownames(installed.packages())) install.packages("sos")
 if(!"tools" %in% rownames(installed.packages())) install.packages("tools")
+if(!"zoo" %in% rownames(installed.packages())) install.packages("zoo")
 
 lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, thresh = 2) {
   if (!file.exists(path2file)) {
@@ -23,6 +24,7 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
   packages <- sort(packages)
 
   library("tools")
+  library("zoo")
   library("sos")
   list_out <- list()
 
