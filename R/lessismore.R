@@ -91,8 +91,9 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
   list_out$packages_used <- packages[which_useful]
   list_out$packages_non_used <- packages[!which_useful]
   list_out$functions_non_matched <- no_match
-  list_out$summary <- paste0("Out of the ",length(packages)," packages in the input vector:\n   ✓ ",length(list_out$packages_used)," are used within the script,\n   ✕ ",length(list_out$packages_non_used)," do not appear to be used within the script,\n",length(list_out$functions_non_matched)," functions are used within the script but do not seem to be part of any package or the Global Environment.")
+  list_out$summary <- paste0("Out of the ",length(packages)," packages in the input vector:\n   - ",length(list_out$packages_used)," are used within the script,\n   - ",length(list_out$packages_non_used)," do not appear to be used within the script,\n   - ",length(list_out$functions_non_matched)," functions are used within the script but do not seem to be part of any package or the Global Environment.")
 
+  cat(list_out$summary)
   return(list_out)
 
 }
