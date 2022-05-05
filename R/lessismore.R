@@ -94,7 +94,19 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
   list_out$summary <- paste0("Out of the ",length(packages)," packages in the input vector:\n   - ",length(list_out$packages_used)," are used within the script,\n   - ",length(list_out$packages_non_used)," do not appear to be used within the script,\n   - ",length(list_out$functions_non_matched)," functions are used within the script but do not seem to be part of any package or the Global Environment.\n")
 
   cat(list_out$summary)
-  return(list_out)
+  l1 <- nchar(rownames(summ_fun)[1]) ; l1 <- ifelse((l1 %% 2) == 0, l1+5, l1+4)
+  l2 <- nchar(rownames(summ_fun)[2]) ; l2 <- ifelse((l2 %% 2) == 0, l2+5, l2+4)
+  l3 <- nchar(rownames(summ_fun)[3]) ; l3 <- ifelse((l3 %% 2) == 0, l3+5, l3+4)
+  cat(paste0("Favorite functions award:\n\n",
+             " ", paste(rep(" ", l2),collapse = ""), "  ", rownames(summ_fun)[1],"()\n",
+             " ", paste(rep(" ", l2),collapse = ""), " ",paste(rep("_", l1),collapse = ""),"\n",
+             "  ", rownames(summ_fun)[2],"()", ifelse((nchar(rownames(summ_fun)[2]) %% 2) == 0, "  ", " "), "|",paste(rep(" ", (l1-1)/2),collapse = ""), "1", paste(rep(" ", (l1-1)/2),collapse = ""),"|\n",
+             " ", paste(rep("_", l2), collapse =""),"|" ,paste(rep(" ", l1),collapse = ""),"|\n",
+             "|", paste(rep(" ", (l2-1)/2), collapse =""), "2", paste(rep(" ", (l2-1)/2), collapse =""),"|" ,paste(rep(" ", l1), collapse = ""), "| ", rownames(summ_fun)[3],"()\n",
+             "|", paste(rep(" ", l2), collapse =""), "|" , paste(rep(" ", l1), collapse = ""), "|",  paste(rep("_", l3),collapse = ""),"\n",
+             "|", paste(rep(" ", l2), collapse =""), "|" , paste(rep(" ", l1), collapse = ""), "|",  paste(rep(" ", (l3-1)/2),collapse = ""), "3",  paste(rep(" ", (l3-1)/2),collapse = ""),"|\n"
+             ))
+return(list_out)
 
 }
 
