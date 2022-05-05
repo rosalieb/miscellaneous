@@ -50,7 +50,7 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
     require("plotly")
     summ_fun$name <- rownames(summ_fun)
     summ_fun <- summ_fun[order(summ_fun$count, decreasing = T),]
-    p <- ggplot(summ_fun, aes(index(summ_fun),count, label=summ_fun$name)) + geom_point() + geom_line() +
+    p <- ggplot(summ_fun, aes(index(summ_fun),count, label=name)) + geom_point() + geom_line() +
       theme_bw() + labs(x="Index", y="Count", title="Occurence of each function in the script \n(Hoover to see name of the functions)")
     list_out$summary_functions_plot <- ggplotly(p)
   }
@@ -91,7 +91,7 @@ lessismore <- function(packages = NULL, path2file = NULL, plot_output = FALSE, t
   list_out$packages_used <- packages[which_useful]
   list_out$packages_non_used <- packages[!which_useful]
   list_out$functions_non_matched <- no_match
-  list_out$summary <- paste0("Out of the ",length(packages)," packages in the input vector:\n   - ",length(list_out$packages_used)," are used within the script,\n   - ",length(list_out$packages_non_used)," do not appear to be used within the script,\n   - ",length(list_out$functions_non_matched)," functions are used within the script but do not seem to be part of any package or the Global Environment.")
+  list_out$summary <- paste0("Out of the ",length(packages)," packages in the input vector:\n   - ",length(list_out$packages_used)," are used within the script,\n   - ",length(list_out$packages_non_used)," do not appear to be used within the script,\n   - ",length(list_out$functions_non_matched)," functions are used within the script but do not seem to be part of any package or the Global Environment.\n")
 
   cat(list_out$summary)
   return(list_out)
