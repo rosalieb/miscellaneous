@@ -9,8 +9,8 @@
 #' @param source Logical argument. Source the file before running: necessary to put the objects in the environment. Default = FALSE.
 #' @param message Logical argument. Default = TRUE
 #'
-#' @example get.objects()
-#' @example get.objects(source = TRUE, message = FALSE)
+#' @example get.objects.from.script()
+#' @example get.objects.from.script(source = TRUE, message = FALSE)
 
 if(!"utils" %in% rownames(installed.packages())) install.packages("utils")
 if(!"tools" %in% rownames(installed.packages())) install.packages("tools")
