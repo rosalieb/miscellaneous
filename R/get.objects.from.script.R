@@ -16,7 +16,7 @@ if(!"utils" %in% rownames(installed.packages())) install.packages("utils")
 if(!"tools" %in% rownames(installed.packages())) install.packages("tools")
 if(!"knitr" %in% rownames(installed.packages())) install.packages("knitr")
 
-get.objects <- function(path2file = NULL, exception = NULL, source = FALSE, message = TRUE) {
+get.objects.from.script <- function(path2file = NULL, exception = NULL, source = FALSE, message = TRUE) {
   library("utils")
   library("tools")
 
